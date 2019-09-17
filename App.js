@@ -17,3 +17,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     },
 });
+
+const ToDoButtonAdd = ({onPress}) => (
+  <Fab 
+    direction = "up"
+    containerStyle = {{}}
+    style = {{backgroundColor: Collors.primary}}
+    position = "bottomRight"
+    onPress={onPress}
+  >
+    <Icon name = "add"/>>
+  </Fab>
+);
