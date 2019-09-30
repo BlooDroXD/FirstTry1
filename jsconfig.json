@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "outDir": "build",
+    "baseUrl": "./",
+    "paths": {
+      "*": [
+        "*",
+        "app/*"
+      ]
+    },
+    "rootDirs": [ ".", "app" ]
+  },
+  "exclude": [ "build" ],
+  "include": [ "app/**/*" ]
+}

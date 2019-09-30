@@ -1,0 +1,22 @@
+{
+  "presets": ["babel-preset-expo", "module:react-native-dotenv"],
+  "env": {
+    "development": {
+      "plugins": []
+    },
+    "production": {
+      "plugins": ["transform-remove-console"]
+    }
+  },
+  "plugins": [
+    ["module-resolver", {
+      "cwd": "babelrc",
+      "root": ["./app"],
+      "extensions": [
+        ".js",
+        ".ios.js",
+        ".android.js"
+      ]
+    }]
+  ]
+}
