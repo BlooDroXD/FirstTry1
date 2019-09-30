@@ -15,8 +15,7 @@ export default class Main extends React.Component {
     render (){
     let notes = this.state.noteArray.map((val,key) => {
         return <Note key={key} keyval={key} val={val}
-                delete={()=> this.deleteNote(key)} 
-                modify={()=> this.modifyNote(key)}/>
+                delete={()=> this.deleteNote(key)} />
     }) 
     return(
         <View style = {styles.container}>
@@ -28,8 +27,8 @@ export default class Main extends React.Component {
             </ScrollView>
             <View style={styles.footer}>
                 <TextInput style={styles.TextInput}
-                 onChangeText={(noteText) => this.setState(noteText)}
-                 value={this.text.noteText}
+                 onChangeText={(noteText) => this.setState({noteText},)}
+                 value={this.state.noteText}
                  placeholder = 'Note' 
                  placeholderTextColor = 'white' 
                  underlineColorAndroid ='transparent'>
@@ -53,9 +52,6 @@ export default class Main extends React.Component {
   deleteNote(key){
       this.state.noteArray.splice(key,1);
       this.setState({noteArray: this.state.noteArray});
-  }
-  modifyNote(key){
-      
   }
 }
 
