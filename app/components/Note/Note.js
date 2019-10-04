@@ -1,29 +1,42 @@
-import React from 'react';
-import { StyleSheet, Text, View,  TouchableOpacity  } from 'react-native';
+import React, { PureComponent } from 'react';
+import { StyleSheet, Text, View, TextInput,  TouchableOpacity  } from 'react-native';
 
-export class Note extends React.Component {
+export class Note extends PureComponent {
   handleDelete = (key) => {
-    const {onDelete} = this.props;
+    const { onDelete } = this.props;
 
     return onDelete(key)
   }
+  handleChange = text => {
+    const { onChange } = this.props;
+    
+    return onChange(text)
+  }
 
   render () {
-    const { onDelete, key, val } = this.props;
+    const { onDelete, onChange, key, val } = this.props;
 
     return(
         <View key={key} style={styles.note}>
+          edit ? (
+          <TextInput />
+          <TouchableOpacity onPress={this.onChange} style={styles.change}>
             <Text style={styles.noteText}>{val.date}</Text>
             <Text style={styles.noteText}>{val.note}</Text>
-            <TouchableOpacity onPress={onDelete} style={styles.delete}>
-              <Text style={styles.noteDeleteText}>-</Text>
-            </TouchableOpacity>
+          </TouchableOpacity>
+          ) : ( )
+          <TouchableOpacity onPress={onDelete} style={styles.delete}>
+            <Text style={styles.noteDeleteText}>-</Text>
+          </TouchableOpacity>
         </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
+    const styles = StyleSheet.create({
+    change:{
+      flex:3,
+    },
     note:{
       position: 'relative',
       padding: 20,

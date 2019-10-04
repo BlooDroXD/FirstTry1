@@ -6,7 +6,7 @@ export default class Main extends PureComponent {
   state = {
       noteArray: [],
       noteText: '',
-      test: 1,
+      edit:false,
   }
 
   addNote = () => {
@@ -36,12 +36,21 @@ export default class Main extends PureComponent {
       noteArray: newNoteArray
     });
   }
+  changeNote = (text) =>{
+    const { edit } = this.state;
+    edit = !edit;
 
-  renderNotes = () => this.state.noteArray.length && this.state.noteArray.map((val,key) => (<Note key={key} val={val}
-      onDelete={this.deleteNote} />)
+    
+  }
+
+  renderNotes = () => this.state.noteArray.length && this.state.noteArray.map((val,key) => (
+      <Note key={key} val={val}
+      onDelete={() => this.deleteNote (key)} 
+      onChange={() => this.changeNote (val.noteText)}/>)
   )
 
-  changeText = (text) => {
+  changeText = (text) => 
+  {
     this.setState({
       noteText: text
     })
